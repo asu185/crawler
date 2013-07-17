@@ -4,15 +4,15 @@ if(!$con){
     die('Could not connect: ' . mysql_error());
 }
 
-//if(mysql_query("CREATE DATABASE my_db", $con))
-//{
-//    echo "Database created\n";
-//}
-//else
-//{
-//    echo "Database existed!\n";
-//    //echo "Error creating database: " . mysql_error() . "\n";
-//}
+if(mysql_query("CREATE DATABASE my_db", $con))
+{
+    echo "Database created\n";
+}
+else
+{
+    echo "Database existed!\n";
+    //echo "Error creating database: " . mysql_error() . "\n";
+}
 
 mysql_query("SET NAMES 'utf8'");
 mysql_select_db("my_db", $con);
@@ -30,7 +30,9 @@ ID int NOT NULL AUTO_INCREMENT,
 PRIMARY KEY(ID),
 SiteName varchar(15),
 AvaBikes int,
-AvaParks int
+AvaParks int,
+Lat float,
+Lng float
 )";
 if(mysql_query($sql,$con)){
     echo "create success!\n";
