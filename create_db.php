@@ -29,6 +29,7 @@ $sql = "CREATE TABLE UbikeInfo
 ID int NOT NULL AUTO_INCREMENT,
 PRIMARY KEY(ID),
 SiteName varchar(15),
+SitePosition varchar(15),
 AvaBikes int,
 AvaParks int,
 Lat float,

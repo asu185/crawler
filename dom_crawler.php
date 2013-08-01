@@ -24,6 +24,9 @@ foreach($html->find('td.point01') as $element){
         $map = file_get_html('http://www.youbike.com.tw/' . $href);
         //$lat = $map->find('input#lat')[0]->value;
         //$lng = $map->find('input#lng')[0]->value;
+        foreach($map->find('input.textinfo') as $site_position){
+            $site_position = $site_position->value;
+        }
 
         foreach($map->find('input#lat') as $lat){
             $lat = $lat->value;
@@ -32,10 +35,11 @@ foreach($html->find('td.point01') as $element){
             $lng = $lng->value;
         }
         echo $site_name . ": " . $ava_bikes . " " . $ava_parks;
+        //echo $site_position . ": " . $ava_bikes . " " . $ava_parks;
         echo " " . $lat . " " . "$lng" . "\n";
 
-        if(mysql_query("INSERT INTO UbikeInfo(SiteName,AvaBikes,AvaParks,Lat,Lng)
-            VALUES('$site_name', '$ava_bikes', '$ava_parks', '$lat', '$lng')"))
+        if(mysql_query("INSERT INTO UbikeInfo(SiteName,SitePosition,AvaBikes,AvaParks,Lat,Lng)
+            VALUES('$site_name', '$site_position', '$ava_bikes', '$ava_parks', '$lat', '$lng')"))
         {
             //echo "Insert Success!\n";
         }
